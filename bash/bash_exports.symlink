@@ -22,6 +22,3 @@ export BUNDLER_ENV="dev"
 
 # Set the path
 export PATH=~/.scripts:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
