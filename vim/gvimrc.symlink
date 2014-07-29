@@ -1,0 +1,22 @@
+""" MACVIM CUSTOMIZATIONS
+if has("gui_macvim")
+  " Clear MacVim menu items
+  macmenu &File.New\ Tab key=<nop>
+  macmenu &Edit.Find.Find\.\.\. key=<nop>
+
+  " remove scroll bars and tool bar
+  set guioptions-=r
+  set guioptions-=L
+  set guioptions-=T
+
+  set fuoptions=maxvert,maxhorz
+
+  set showtabline=0
+
+  set lines=100
+  set columns=400
+
+  " Start in fullscreen mode
+  au GUIEnter * set fullscreen
+  map <D-Return> :set invfu<CR>
+end

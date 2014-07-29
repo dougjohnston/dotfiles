@@ -1,0 +1,62 @@
+# File Listing
+alias l="ls -lrtF"
+alias la="ls -lartF"
+alias ld='lsd -lrt | grep "^d"'
+
+# Navigation
+alias ..="cd .."
+alias ...="cd ../.."
+alias -- -="cd -"
+
+# IP addresses
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ipconfig getifaddr en1"
+alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
+# One of @janmoesen’s ProTip™s
+for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
+  alias "$method"="lwp-request -m '$method'"
+done
+
+#
+### App-Specific Aliases
+#
+
+# Rails
+alias rs="rails server"
+alias rc="rails console"
+alias rg="rails generate"
+alias rd="rails dbconsole"
+
+# VIM
+alias vi="mvim"
+alias vir="vi && rails s"
+
+# Git
+alias gst="git status"
+alias gc="git commit -m"
+alias gr='[ ! -z `git rev-parse --show-cdup` ] && cd `git rev-parse --show-cdup || pwd`'
+
+#
+### Mac-Specific Aliases
+#
+
+# Flush Directory Service cache
+alias flushcache="dscacheutil -flushcache"
+
+# Recursively delete `.DS_Store` files
+alias cleanup="find . -name '*.DS_Store' -type f -ls -delete"
+
+# Empty the Trash on all mounted volumes and the main HDD
+alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; rm -rfv ~/.Trash"
+
+# Show/hide hidden files in Finder
+alias show="defaults write com.apple.Finder AppleShowAllFiles -bool true && killall Finder"
+alias hide="defaults write com.apple.Finder AppleShowAllFiles -bool false && killall Finder"
+
+# Hide/show all desktop icons (useful when presenting)
+alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+
+# Enable/Disable Spotlight
+alias spotoff="sudo mdutil -a -i off"
+alias spoton="sudo mdutil -a -i on"
