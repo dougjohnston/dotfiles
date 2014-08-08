@@ -21,4 +21,4 @@ export LANG="en_US.UTF-8"
 export BUNDLER_ENV="dev"
 
 # Set the path
-export PATH=~/.scripts:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH
+export PATH=~/.bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH

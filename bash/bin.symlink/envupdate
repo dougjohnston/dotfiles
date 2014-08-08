@@ -1,0 +1,92 @@
+#!/usr/bin/env ruby
+
+require 'pry'
+
+#
+# Runs a series of commands to update the dev environment.
+#
+
+puts "\n"
+puts "UPDATING DEV ENVIRONMENT"
+puts "************************"
+puts "\n"
+
+#
+# Homebrew methods
+#
+
+class Homebrew
+  @outdated = []
+
+  def self.update
+    puts "Checking for Homebrew updates..."
+    %x( brew update )
+
+    upgrade_packages(get_upgrade_list()) if outdated?
+
+    puts "\nFinished with Homebrew updates."
+  end
+
+  def self.outdated?
+    packages = (`brew outdated --verbose`).split(/\n/)
+
+    packages.each do |package|
+      @outdated << package.split(/\s/, 2)
+    end
+
+    if @outdated.empty?
+      puts "Homebrew is current. Nothing to update."
+      return false
+    end
+
+    return true
+  end
+
+  # create list of packages to update
+  def self.get_upgrade_list
+    selection = list_and_prompt()
+
+    list = []
+    if selection == "a"
+      list = @outdated
+    elsif selection =~ /^\d+/
+      selection.split(/,?\s+/).each do |num|
+        list << @outdated[num.to_i - 1]
+      end
+    end
+
+    return list || nil
+  end
+
+  def self.list_and_prompt
+    puts "\n"
+    puts "Updates Available:"
+
+    @outdated.each_with_index do |package, i|
+      puts "  #{i + 1}. #{package[0]} #{package[1]}"
+    end
+
+    puts "\n"
+    print "Update (a)ll, (n)one, or list package numbers (space-separated): "
+    return gets.chomp
+  end
+
+  def self.upgrade_packages(packages)
+    return false if packages.empty?
+    packages.each do |package|
+      puts "Updating #{package[0]} #{package[1]}..."
+      system("brew upgrade #{package[0]}")
+      puts "\nFinished updating #{package[0]}. Check output for additional instructions.\n\n"
+    end
+  end
+end
+
+class Vim
+  # TODO: do some vim updates here
+end
+
+
+Homebrew.update
+
+puts "\n"
+puts "All done."
