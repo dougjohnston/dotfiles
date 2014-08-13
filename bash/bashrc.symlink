@@ -5,11 +5,29 @@ for file in ~/.{bash_prompt,bash_exports,bash_aliases,bash_functions,bash_extras
 done
 unset file
 
-# Load chruby
-source /usr/local/opt/chruby/share/chruby/chruby.sh
+#
+### CHRUBY
+#
 
-# Load chruby auto-switching
-source /usr/local/opt/chruby/share/chruby/auto.sh
+# Get the chruby home directory based on OS
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+  chruby="/usr/local/share/chruby"
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+  chruby="/usr/local/opt/chruby/share/chruby"
+fi
+
+# Load chruby, if it exists
+if [ -f "$chruby/chruby.sh" ]; then
+  source $chruby/chruby.sh
+
+  # Load chruby auto-switching
+  if [ -f "$chruby/auto.sh" ]; then
+    source $chruby/auto.sh
+  fi
+else
+  print "\n-- Warning: Unable to load chruby.\n"
+fi
+unset chruby
 
 #
 ### OTHER OPTIONS
