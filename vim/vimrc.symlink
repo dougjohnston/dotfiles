@@ -9,67 +9,84 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" Vundle Required Bundle
-Bundle 'gmarik/vundle'
 
-" General Bundles
-Bundle 'bling/vim-airline'
+" INSTALL VUNDLE PLUGINS:
+" :PluginInstall
+
+" UPDATE VUNDLE PLUGINS:
+" :PluginUpdate
+
+" Vundle Required Plugin
+Plugin 'gmarik/vundle'
+
+" General Plugins
+Plugin 'bling/vim-airline'
 
 " Project Navigation
-Bundle 'scrooloose/nerdtree'
-Bundle 'kien/ctrlp.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
 
 " Buffer Navigation
-Bundle 'jeetsukumaran/vim-buffergator'
-
-" Code Navigation (setup: brew install ctags)
-"Bundle 'majutsushi/tagbar'
+"Plugin 'jeetsukumaran/vim-buffergator'
 
 " Code Completion (setup: http://bit.ly/12c5JHr)
-Bundle 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 
 " Code Helpers
-Bundle 'Raimondi/delimitMate'
+Plugin 'Raimondi/delimitMate'
 
 " HTML
-Bundle 'othree/html5.vim'
-Bundle 'mattn/emmet-vim'
+Plugin 'othree/html5.vim'
+"Plugin 'mattn/emmet-vim'
 
 " CSS
-Bundle 'ap/vim-css-color'
+Plugin 'ap/vim-css-color'
 
 " JavaScript (setup for tern: npm install (within bundle dir))
-Bundle 'jelera/vim-javascript-syntax'
-Bundle 'pangloss/vim-javascript'
-Bundle 'marijnh/tern_for_vim'
-Bundle 'othree/javascript-libraries-syntax.vim'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'pangloss/vim-javascript'
+Plugin 'marijnh/tern_for_vim'
+Plugin 'othree/javascript-libraries-syntax.vim'
 
 " Markdown
-Bundle 'plasticboy/vim-markdown'
+Plugin 'plasticboy/vim-markdown'
 
 " Git Integration
-Bundle 'airblade/vim-gitgutter'
+Plugin 'airblade/vim-gitgutter'
 
 " Searching
-Bundle 'mileszs/ack.vim'
+Plugin 'mileszs/ack.vim'
 
 " Comments
-Bundle 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdcommenter'
 
 " Syntax Checking (setup: npm install -g jshint)
-Bundle 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 
 " Look & Feel
-Bundle 'nathanaelkane/vim-indent-guides'
-Bundle 'myusuf3/numbers.vim'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'myusuf3/numbers.vim'
 
-" Color Scheme Bundles
-Bundle 'w0ng/vim-hybrid'
-Bundle 'altercation/vim-colors-solarized'
+" Color Scheme Plugins
+Plugin 'w0ng/vim-hybrid'
+Plugin 'altercation/vim-colors-solarized'
+
+" Snippet Support
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+
+" Snippet Libraries
+Plugin 'honza/vim-snippets'
+
+" RSpec Integration
+Plugin 'tpope/vim-dispatch'
+
+map <Leader>t :Dispatch rspec %<CR>
 
 " BUNDLES TO TRY SOMEDAY
-"Bundle 'godlygeek/tabular'
-"Bundle 'terryma/vim-multiple-cursors'
+"Plugin 'godlygeek/tabular'
+"Plugin 'terryma/vim-multiple-cursors'
 
 filetype plugin indent on
 
@@ -180,18 +197,6 @@ let NERDTreeIgnore=['.vim$', '\~$']
 " Command-P
 let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|git'
 
-" Tagbar
-nmap <F3> :TagbarToggle<CR>
-let g:tagbar_type_javascript = {
-    \ 'ctagstype' : 'JavaScript',
-    \ 'kinds'     : [
-        \ 'o:objects',
-        \ 'f:functions',
-        \ 'a:arrays',
-        \ 's:strings'
-    \ ]
-\ }
-
 " Ctrl-P
 let g:ctrlp_map = ''
 nmap <C-t> :CtrlP<SPACE>
@@ -227,10 +232,17 @@ let g:syntastic_html_tidy_ignore_errors = [
 " JavaScript Syntax
 let g:used_javascript_libs = 'jquery,angularjs'
 
-"YouCompleteMe
-let g:ycm_add_preview_to_completeopt=0
+" YouCompleteMe
 let g:ycm_confirm_extra_conf=0
 set completeopt-=preview
+" Remap the selection keys so snipMate can have <Tab>
+let g:ycm_key_list_select_completion = ['<Down>', '<C-j>']
+let g:ycm_key_list_previous_completion = ['<Up>', '<C-k>']
+
+" Snippets
+let g:snipMate = {}
+let g:snipMate.scope_aliases = {}
+let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
 
 """ MISCELLANEOUS
 " Autosave
