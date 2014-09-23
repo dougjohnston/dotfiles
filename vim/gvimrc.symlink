@@ -17,6 +17,6 @@ if has("gui_macvim")
   set columns=400
 
   " Start in fullscreen mode
-  au GUIEnter * set fullscreen
-  map <D-Return> :set invfu<CR>
+  " au GUIEnter * set fullscreen
+  " map <D-Return> :set invfu<CR>
 end

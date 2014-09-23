@@ -25,7 +25,7 @@ if [ -f "$chruby/chruby.sh" ]; then
     source $chruby/auto.sh
   fi
 else
-  print "\n-- Warning: Unable to load chruby.\n"
+  printf "\n-- Warning: Unable to load chruby.\n"
 fi
 unset chruby
 
@@ -38,3 +38,6 @@ shopt -s nocaseglob
 
 # Turn off less history file generation
 LESSHISTFILE=/dev/null
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
