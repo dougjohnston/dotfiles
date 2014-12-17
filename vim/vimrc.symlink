@@ -1,13 +1,15 @@
 " Leader
 let mapleader=","
 
+" Global Ignores
+set wildignore+=*/tmp/*,*/log/*
 
 """ VIM BUNDLES
 " Vundle Setup
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#rc()
+call vundle#begin()
 
 
 " INSTALL VUNDLE PLUGINS:
@@ -22,9 +24,14 @@ Plugin 'gmarik/vundle'
 " General Plugins
 Plugin 'bling/vim-airline'
 
-" Project Navigation
+ "Project Navigation
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
+  let g:ctrlp_map = ''
+  let g:ctrlp_custom_ignore = '\v[\/]\(node_modules|bower_components|git|log|migrate)$'
+  nmap <C-t> :CtrlP<SPACE>
+  nmap <D-t> :CtrlP<CR>
+  imap <D-t> <ESC>:CtrlP<CR>
 
 " Buffer Navigation
 "Plugin 'jeetsukumaran/vim-buffergator'
@@ -42,11 +49,17 @@ Plugin 'othree/html5.vim'
 " CSS
 Plugin 'ap/vim-css-color'
 
+" Ruby
+Plugin 'vim-ruby/vim-ruby'
+
 " JavaScript (setup for tern: npm install (within bundle dir))
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'othree/javascript-libraries-syntax.vim'
+
+" CoffeeScript
+Plugin 'kchmck/vim-coffee-script'
 
 " Markdown
 Plugin 'plasticboy/vim-markdown'
@@ -56,6 +69,8 @@ Plugin 'airblade/vim-gitgutter'
 
 " Searching
 Plugin 'mileszs/ack.vim'
+  nmap <D-f> :Ack!<SPACE>
+  imap <D-f> <ESC>:Ack!<SPACE>
 
 " Comments
 Plugin 'scrooloose/nerdcommenter'
@@ -65,11 +80,11 @@ Plugin 'scrooloose/syntastic'
 
 " Look & Feel
 Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'myusuf3/numbers.vim'
+Plugin 'myusuf3/numbers.vim' " PERFORMANCE HIT!
 
 " Color Scheme Plugins
 Plugin 'w0ng/vim-hybrid'
-Plugin 'altercation/vim-colors-solarized'
+"Plugin 'altercation/vim-colors-solarized'
 
 " Snippet Support
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -81,20 +96,25 @@ Plugin 'honza/vim-snippets'
 
 " RSpec Integration
 Plugin 'tpope/vim-dispatch'
-
-map <Leader>t :Dispatch rspec %<CR>
+  map <Leader>t :Dispatch rspec %<CR>
 
 " BUNDLES TO TRY SOMEDAY
 "Plugin 'godlygeek/tabular'
 "Plugin 'terryma/vim-multiple-cursors'
 
+call vundle#end()
 filetype plugin indent on
 
 
+""" VIM PERFORMANCE
+"set ttyfast  " fast terminal
+"set lazyredraw " avoid scrolling problems
+
 """ COLOR SCHEMES
-" Colors
+" Colors & Syntax Highlighting
 set t_Co=256
 syntax on
+set synmaxcol=128
 
 " Color Scheme
 set background=dark
@@ -129,7 +149,7 @@ set nowrap
 " Folding
 set nofoldenable
 
-" Current Line
+" Current Line PERFORMANCE HIT!!
 set cursorline
 highlight CursorLine ctermbg=darkgray guibg=#343434
 
@@ -194,22 +214,9 @@ au BufRead,BufNewFile *.md setlocal tw=79 fo+=t
 map <F2> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['.vim$', '\~$']
 
-" Command-P
-let g:ctrlp_custom_ignore = 'node_modules\|bower_components\|git'
-
-" Ctrl-P
-let g:ctrlp_map = ''
-nmap <C-t> :CtrlP<SPACE>
-nmap <D-t> :CtrlP<CR>
-imap <D-t> <ESC>:CtrlP<CR>
-
 " NerdCommenter
 map <D-/> <PLUG>NERDCommenterToggle<CR>
 imap <D-/> <ESC><PLUG>NERDCommenterToggle<CR>i
-
-" Ack
-nmap <D-f> :Ack<SPACE>
-imap <D-f> <ESC>:Ack<SPACE>
 
 " Numbers
 set number

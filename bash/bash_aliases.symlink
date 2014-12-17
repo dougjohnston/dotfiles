@@ -1,21 +1,30 @@
 # File Listing
 alias l="ls -lrtF"
 alias la="ls -lartF"
-alias ld='lsd -lrt | grep "^d"'
+alias ld='ls -lF | grep "^d"'
+alias ll="ls -laF"
 
 # Navigation
 alias ..="cd .."
 alias ...="cd ../.."
 alias -- -="cd -"
 
+# History
+alias h="history"
+
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en1"
 alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
+
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
   alias "$method"="lwp-request -m '$method'"
 done
+
+# Bash Config
+alias reload="source ~/.bashrc"
+alias config="vi ~/.dotfiles/"
 
 #
 ### App-Specific Aliases
@@ -24,8 +33,11 @@ done
 # Rails
 alias rs="rails server"
 alias rc="rails console"
-alias rg="rails generate"
+alias rg="rails generate "
 alias rd="rails dbconsole"
+
+# Bundler
+alias be="bundle exec "
 
 # VIM
 alias vi="mvim"
@@ -33,8 +45,8 @@ alias vir="vi && rails s"
 
 # Git
 alias gst="git status"
-alias gc="git commit -m"
-alias gr='[ ! -z `git rev-parse --show-cdup` ] && cd `git rev-parse --show-cdup || pwd`'
+alias gcm="git commit -m"
+alias gce="git commit -e"
 
 #
 ### Mac-Specific Aliases
