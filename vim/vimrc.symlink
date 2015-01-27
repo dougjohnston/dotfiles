@@ -4,6 +4,10 @@ let mapleader=","
 " Global Ignores
 set wildignore+=*/tmp/*,*/log/*
 
+" Syntax Highlighting
+set t_Co=256
+syntax on
+
 """ VIM BUNDLES
 " Vundle Setup
 set nocompatible
@@ -21,20 +25,49 @@ call vundle#begin()
 " Vundle Required Plugin
 Plugin 'gmarik/vundle'
 
-" General Plugins
+" Status Bar and Buffers
 Plugin 'bling/vim-airline'
+  let g:airline#extensions#tabline#enabled = 1
+  let g:airline#extensions#tabline#fnamemod = ':t'
+
+  " Move to the previous buffer
+  nmap <c-o> :bprevious<CR>
+
+  " Move to the next buffer
+  nmap <c-p> :bnext<CR>
 
  "Project Navigation
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
-  let g:ctrlp_map = ''
-  let g:ctrlp_custom_ignore = '\v[\/]\(node_modules|bower_components|git|log|migrate)$'
-  nmap <C-t> :CtrlP<SPACE>
-  nmap <D-t> :CtrlP<CR>
-  imap <D-t> <ESC>:CtrlP<CR>
+  let g:ctrlp_map = '<D-t>'
+  let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v[\/](\.git|log|migrate)$',
+  \}
+
+  " Easy bindings for its various modes
+  "nmap <leader>bb :CtrlPBuffer<CR>
+  "nmap <leader>bm :CtrlPMixed<cr>
+  "nmap <leader>bs :CtrlPMRU<cr>
 
 " Buffer Navigation
-"Plugin 'jeetsukumaran/vim-buffergator'
+Plugin 'jeetsukumaran/vim-buffergator'
+  " Use the right side of the screen
+  let g:buffergator_viewport_split_policy = 'R'
+
+  " I want my own keymappings...
+  let g:buffergator_suppress_keymaps = 1
+
+  " Looper buffers
+  "let g:buffergator_mru_cycle_loop = 1
+
+  " View the entire list of buffers open
+  nmap <leader>b :BuffergatorOpen<cr>
+
+  " Go to the previous buffer open
+  "nmap <leader>jj :BuffergatorMruCyclePrev<cr>
+
+  " Go to the next buffer open
+  "nmap <leader>kk :BuffergatorMruCycleNext<cr>
 
 " Code Completion (setup: http://bit.ly/12c5JHr)
 Plugin 'Valloric/YouCompleteMe'
@@ -77,14 +110,28 @@ Plugin 'scrooloose/nerdcommenter'
 
 " Syntax Checking (setup: npm install -g jshint)
 Plugin 'scrooloose/syntastic'
+  set statusline+=%#warningmsg#
+  set statusline+=%{SyntasticStatuslineFlag()}
+  set statusline+=%*
+
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_auto_loc_list = 1
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 0
+
+  let g:syntastic_ruby_checkers = ['rubocop']
+  "let g:syntastic_html_tidy_ignore_errors = [
+      "\"proprietary attribute \"ng-"]
+      "\"trimming empty <i>",
+      "\"trimming empty <span>",
+      "\"<input> proprietary attribute \"autocomplete\"",
+      "\"proprietary attribute \"role\"",
+      "\"proprietary attribute \"hidden\"",
+  "\]
 
 " Look & Feel
 Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'myusuf3/numbers.vim' " PERFORMANCE HIT!
-
-" Color Scheme Plugins
-Plugin 'w0ng/vim-hybrid'
-"Plugin 'altercation/vim-colors-solarized'
+"Plugin 'myusuf3/numbers.vim' " PERFORMANCE HIT!
 
 " Snippet Support
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -98,6 +145,12 @@ Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-dispatch'
   map <Leader>t :Dispatch rspec %<CR>
 
+" Color Schemes
+"Plugin 'w0ng/vim-hybrid'
+"Plugin 'altercation/vim-colors-solarized'
+Plugin 'flazz/vim-colorschemes'
+  set background=dark
+
 " BUNDLES TO TRY SOMEDAY
 "Plugin 'godlygeek/tabular'
 "Plugin 'terryma/vim-multiple-cursors'
@@ -105,21 +158,16 @@ Plugin 'tpope/vim-dispatch'
 call vundle#end()
 filetype plugin indent on
 
+""" Set Color Scheme
+"colorscheme hybrid
+colorscheme gruvbox
+"colorscheme solarized
 
 """ VIM PERFORMANCE
-"set ttyfast  " fast terminal
+set synmaxcol=180
+"set ttyfast    " fast terminal
 "set lazyredraw " avoid scrolling problems
 
-""" COLOR SCHEMES
-" Colors & Syntax Highlighting
-set t_Co=256
-syntax on
-set synmaxcol=128
-
-" Color Scheme
-set background=dark
-colorscheme hybrid
-"colorscheme solarized
 
 """ GENERAL SETTINGS
 " Backup & Swap Files
@@ -184,8 +232,8 @@ nnoremap k gk
 nnoremap <D-k> <C-b>
 
 " Split Windows
-nnoremap <leader>s :vs<CR>
-nnoremap <leader>v :sp<CR>
+nnoremap <leader>v :vs<CR>
+nnoremap <leader>s :sp<CR>
 
 " Split Navigation
 nnoremap <C-h> <C-w>h
@@ -207,7 +255,7 @@ nnoremap <leader>w :set tw=79 fo+=t<CR>
 nnoremap <leader>ww :set tw=0 fo-=t<CR>
 
 " Easier editing of Markdown files
-au BufRead,BufNewFile *.md setlocal tw=79 fo+=t
+"au BufRead,BufNewFile *.md setlocal tw=79 fo+=t
 
 """ PLUGIN MAPPINGS & CUSTOMIZATION
 " NerdTree
@@ -225,17 +273,6 @@ set number
 let g:indent_guides_start_level=2
 let g:indent_guides_guide_size=1
 
-" Syntastic
-let g:syntastic_check_on_open=1
-let g:syntastic_html_tidy_ignore_errors = [
-    \"proprietary attribute \"ng-"]
-    \"trimming empty <i>",
-    \"trimming empty <span>",
-    \"<input> proprietary attribute \"autocomplete\"",
-    \"proprietary attribute \"role\"",
-    \"proprietary attribute \"hidden\"",
-\]
-
 " JavaScript Syntax
 let g:used_javascript_libs = 'jquery,angularjs'
 
@@ -252,6 +289,10 @@ let g:snipMate.scope_aliases = {}
 let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
 
 """ MISCELLANEOUS
+" Command-S save
+map <D-s> :w
+imap <D-s> <ESC>:w
+
 " Autosave
 au FocusLost * :wa
 au FocusLost silent! :wa
