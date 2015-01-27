@@ -30,6 +30,15 @@ fi
 unset chruby
 
 #
+### GIT COMPLETION
+#
+if [ -f ~/.bin/git-completion.bash ]; then
+  source ~/.bin/git-completion.bash
+else
+  printf "\n-- Warning: Unable to load git-completion.bash.\n"
+fi
+
+#
 ### OTHER OPTIONS
 #
 
