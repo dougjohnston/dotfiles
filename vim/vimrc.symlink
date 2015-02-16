@@ -74,6 +74,7 @@ Plugin 'Valloric/YouCompleteMe'
 
 " Code Helpers
 Plugin 'Raimondi/delimitMate'
+Plugin 'tpope/vim-surround'
 
 " HTML
 Plugin 'othree/html5.vim'
@@ -84,6 +85,13 @@ Plugin 'ap/vim-css-color'
 
 " Ruby
 Plugin 'vim-ruby/vim-ruby'
+
+" Rails
+Plugin 'tpope/vim-rails'
+  nnoremap <leader>a :AV<CR>
+  nnoremap <leader>r :RV<CR>
+  nnoremap <leader>t :Rake<CR>
+  nnoremap <leader>y :.Rake<CR>
 
 " JavaScript (setup for tern: npm install (within bundle dir))
 Plugin 'jelera/vim-javascript-syntax'
@@ -105,6 +113,9 @@ Plugin 'mileszs/ack.vim'
   nmap <D-f> :Ack!<SPACE>
   imap <D-f> <ESC>:Ack!<SPACE>
 
+  " Except don't actually use Ack
+  let g:ackprg = 'ag --nogroup --nocolor --column'
+
 " Comments
 Plugin 'scrooloose/nerdcommenter'
 
@@ -114,20 +125,18 @@ Plugin 'scrooloose/syntastic'
   set statusline+=%{SyntasticStatuslineFlag()}
   set statusline+=%*
 
-  let g:syntastic_always_populate_loc_list = 1
-  let g:syntastic_auto_loc_list = 1
+  let g:syntastic_auto_loc_list = 0
+  let g:syntastic_loc_list_height = 5
   let g:syntastic_check_on_open = 1
-  let g:syntastic_check_on_wq = 0
+  let g:syntastic_check_on_wq = 1
+  let g:syntastic_cursor_column = 0
+
+  let g:syntastic_error_symbol = "✗"
+  let g:syntastic_warning_symbol = "⚠"
 
   let g:syntastic_ruby_checkers = ['rubocop']
-  "let g:syntastic_html_tidy_ignore_errors = [
-      "\"proprietary attribute \"ng-"]
-      "\"trimming empty <i>",
-      "\"trimming empty <span>",
-      "\"<input> proprietary attribute \"autocomplete\"",
-      "\"proprietary attribute \"role\"",
-      "\"proprietary attribute \"hidden\"",
-  "\]
+  let g:syntastic_scss_checkers = ['scss_lint']
+  let g:syntastic_ignore_files = ['schema\.rb']
 
 " Look & Feel
 Plugin 'nathanaelkane/vim-indent-guides'
@@ -143,7 +152,7 @@ Plugin 'honza/vim-snippets'
 
 " RSpec Integration
 Plugin 'tpope/vim-dispatch'
-  map <Leader>t :Dispatch rspec %<CR>
+  "map <Leader>t :Dispatch rspec %<CR>
 
 " Color Schemes
 "Plugin 'w0ng/vim-hybrid'
@@ -253,6 +262,11 @@ nnoremap ; :
 " Easier writing (for paragraphs, blog posts, etc.)
 nnoremap <leader>w :set tw=79 fo+=t<CR>
 nnoremap <leader>ww :set tw=0 fo-=t<CR>
+
+" Folding
+set foldmethod=indent
+set foldlevelstart=2
+nnoremap <Space> za
 
 " Easier editing of Markdown files
 "au BufRead,BufNewFile *.md setlocal tw=79 fo+=t
