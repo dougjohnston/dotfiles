@@ -50,3 +50,6 @@ LESSHISTFILE=/dev/null
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+# added by travis gem
+[ -f /Users/doug/.travis/travis.sh ] && source /Users/doug/.travis/travis.sh
