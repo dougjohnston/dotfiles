@@ -29,6 +29,9 @@ else
 fi
 unset chruby
 
+# Default Ruby
+chruby ruby-2.2.2
+
 #
 ### GIT COMPLETION
 #
