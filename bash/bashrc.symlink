@@ -30,7 +30,7 @@ fi
 unset chruby
 
 # Default Ruby
-chruby ruby-2.2.2
+chruby ruby-2.3.0
 
 #
 ### GIT COMPLETION
