@@ -205,6 +205,9 @@ Plugin 'SirVer/ultisnips'
 
   nnoremap <leader>ue :UltiSnipsEdit<CR>
 
+" Swap Windows
+Plugin 'wesQ3/vim-windowswap'
+
 "Plugin 'MarcWeber/vim-addon-mw-utils'
 "Plugin 'tomtom/tlib_vim'
 "Plugin 'garbas/vim-snipmate'
@@ -327,8 +330,8 @@ noremap <F1> <ESC>
 nnoremap ; :
 
 " Easier writing (for paragraphs, blog posts, etc.)
-nnoremap <leader>w :set tw=79 fo+=t<CR>
-nnoremap <leader>ww :set tw=0 fo-=t<CR>
+"nnoremap <leader>w :set tw=79 fo+=t<CR>
+"nnoremap <leader>ww :set tw=0 fo-=t<CR>
 
 " Folding
 set nofoldenable        " Disable folding
