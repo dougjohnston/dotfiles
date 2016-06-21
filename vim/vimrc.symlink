@@ -15,7 +15,6 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 
-
 " INSTALL VUNDLE PLUGINS:
 " :PluginInstall
 
@@ -30,7 +29,7 @@ Plugin 'justinmk/vim-sneak'
   let g:sneak#s_next = 1
 
 " Color Scheme
-Plugin 'jacoborus/tender'
+Plugin 'dougjohnston/tender.vim'
 "Plugin 'flazz/vim-colorschemes'
 "Plugin 'w0ng/vim-hybrid'
 "Plugin 'altercation/vim-colors-solarized'
@@ -45,17 +44,6 @@ Plugin 'jacoborus/tender'
 
 " Status Bar and Buffers
 Plugin 'itchyny/lightline.vim'
-"Plugin 'vim-airline/vim-airline-themes'
-"Plugin 'bling/vim-airline'
-  "let g:airline#extensions#tabline#enabled = 1
-  "let g:airline#extensions#tabline#fnamemod = ':t'
-  "let g:airline_left_sep = '»'
-  "let g:airline_right_sep = '«'
-  "let g:airline_section_c = '%t'
-  "let g:airline#extensions#branch#format = 1
-  "let g:airline#extensions#hunks#enabled = 0
-  "let g:airline_theme = 'powerlineish'
-
   " Move to the previous buffer
   nmap <c-o> :bprevious<CR>
 
@@ -65,12 +53,12 @@ Plugin 'itchyny/lightline.vim'
 
 " Project Navigation
 Plugin 'scrooloose/nerdtree'
-  let g:NERDTreeShowHidden = 0
-  let g:NERDTreeWinSize = 36
-  let g:NERDTreeMinimalUI = 1
-  let g:NERDTreeIgnore=['.vim$', '\~$']
+  let NERDTreeShowHidden = 0
+  let NERDTreeWinSize = 36
+  let NERDTreeMinimalUI = 1
+  let NERDTreeIgnore=['.vim$', '\~$']
   let NERDTreeMapOpenVSplit = 'v'
-  let NERDTreeMapOpenVSplit = 's'
+  let NERDTreeQuitOnOpen = 1
   map <F2> :NERDTreeToggle<CR>
 
 Plugin 'Xuyuanp/nerdtree-git-plugin'
@@ -136,6 +124,10 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
 "Plugin 'marijnh/tern_for_vim'
 Plugin 'othree/javascript-libraries-syntax.vim'
+  let g:used_javascript_libs = 'angularjs, angularui,angularuirouter,jquery,react,jasmine'
+
+" TypeScript
+Plugin 'leafgarland/typescript-vim'
 
 " JSX
 Plugin 'mxw/vim-jsx'
@@ -160,6 +152,7 @@ Plugin 'mileszs/ack.vim'
 
   " Except don't actually use Ack
   let g:ackprg = 'ag --nogroup --nocolor --column'
+  let g:ackhighlight = 1
 
 " Comments
 Plugin 'scrooloose/nerdcommenter'
@@ -232,8 +225,7 @@ Plugin 'honza/vim-snippets'
 call vundle#end()
 filetype plugin indent on
 
-
-
+let macvim_skip_colorscheme = 1
 "colorscheme gruvbox
 "colorscheme hybrid
 "colorscheme solarized
@@ -242,7 +234,7 @@ colorscheme tender
 let g:lightline = { 'colorscheme': 'tender' }
 
 """ VIM PERFORMANCE
-set synmaxcol=120
+set synmaxcol=140
 "set ttyfast    " fast terminal
 "set ttyscroll=3
 "set lazyredraw " avoid scrolling problems
@@ -255,7 +247,7 @@ set directory=~/.vim/vim-tmp
 " Font
 "set guifont=Monaco:h13.00
 "set linespace=1
-set guifont=FiraMono:h14.00
+set guifont=FiraMono:h14
 set linespace=-1
 
 " Status Bar
@@ -293,7 +285,6 @@ set softtabstop=2
 " Splitting
 set splitbelow
 set splitright
-
 
 """ BASIC MAPPINGS
 " Edit and Reload .vimrc

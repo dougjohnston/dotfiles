@@ -26,6 +26,9 @@ done
 alias reload="source ~/.bashrc"
 alias config="vi ~/.dotfiles/"
 
+# Miscellaneous Aliases
+alias tmp="cd ~/tmp"
+
 ###################################
 # App-Specific Aliases
 ###################################
