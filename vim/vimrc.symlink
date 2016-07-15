@@ -126,11 +126,9 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'othree/javascript-libraries-syntax.vim'
   let g:used_javascript_libs = 'angularjs, angularui,angularuirouter,jquery,react,jasmine'
 
-" TypeScript
-Plugin 'leafgarland/typescript-vim'
-
 " JSX
 Plugin 'mxw/vim-jsx'
+  let g:jsx_ext_required = 0
 
 " Elixir
 Plugin 'elixir-lang/vim-elixir'
@@ -231,7 +229,7 @@ let macvim_skip_colorscheme = 1
 "colorscheme solarized
 "colorscheme codeschool
 colorscheme tender
-let g:lightline = { 'colorscheme': 'tender' }
+"let g:lightline = { 'colorscheme': 'tender' }
 
 """ VIM PERFORMANCE
 set synmaxcol=140

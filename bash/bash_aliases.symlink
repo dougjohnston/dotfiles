@@ -33,6 +33,10 @@ alias tmp="cd ~/tmp"
 # App-Specific Aliases
 ###################################
 
+# Ruby
+alias ruby= "ps aux | grep ruby"
+alias killruby= "ps aux | grep ruby | awk '{print $2}' | xargs kill"
+
 # Rails
 alias rs="rails server"
 alias rc="rails console"
