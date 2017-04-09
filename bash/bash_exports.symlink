@@ -20,5 +20,8 @@ export LANG="en_US.UTF-8"
 # Bundler
 export BUNDLER_ENV="dev"
 
+# Ruby Config
+export RUBY_CONFIGURE_OPTS=--with-readline-dir=`brew --prefix readline`
+
 # Set the path
 export PATH=~/.bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH
