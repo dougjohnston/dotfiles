@@ -5,59 +5,62 @@ for file in ~/.{bash_prompt,bash_exports,bash_aliases,bash_functions,bash_extras
 done
 unset file
 
-#
-### CHRUBY
-#
-
-# Get the chruby home directory based on OS
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
-  chruby="/usr/local/share/chruby"
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-  chruby="/usr/local/opt/chruby/share/chruby"
-fi
-
-# Load chruby, if it exists
-if [ -f "$chruby/chruby.sh" ]; then
-  source $chruby/chruby.sh
-
-  # Load chruby auto-switching
-  if [ -f "$chruby/auto.sh" ]; then
-    source $chruby/auto.sh
+# Only do the following if in an interactive session
+if [[ $- == *i* ]]; then
+  ### CHRUBY
+  # Get the chruby home directory based on OS
+  if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    chruby="/usr/local/share/chruby"
+  elif [[ "$OSTYPE" == "darwin"* ]]; then
+    chruby="/usr/local/opt/chruby/share/chruby"
   fi
-else
-  printf "\n-- Warning: Unable to load chruby.\n"
-fi
-unset chruby
 
-# Default Ruby
-chruby ruby-2.3.1
+  # Load chruby, if it exists
+  if [ -f "$chruby/chruby.sh" ]; then
+    source $chruby/chruby.sh
 
-#
-### GIT COMPLETION
-#
-if [ -f ~/.bin/git-completion.bash ]; then
-  source ~/.bin/git-completion.bash
-else
-  printf "\n-- Warning: Unable to load git-completion.bash.\n"
-fi
+    # Load chruby auto-switching
+    if [ -f "$chruby/auto.sh" ]; then
+      source $chruby/auto.sh
+    fi
+  else
+    printf "\n-- Warning: Unable to load chruby.\n"
+  fi
+  unset chruby
 
-#
-### OTHER OPTIONS
-#
+  # Default Ruby
+  chruby ruby-2.4.1
 
-# Case-insensitive globbing (used in pathname expansion)
-shopt -s nocaseglob
+  #
+  ### GIT COMPLETION
+  #
+  if [ -f ~/.bin/git-completion.bash ]; then
+    source ~/.bin/git-completion.bash
+  else
+    printf "\n-- Warning: Unable to load git-completion.bash.\n"
+  fi
 
-# Turn off less history file generation
-LESSHISTFILE=/dev/null
+  #
+  ### OTHER OPTIONS
+  #
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+  # Case-insensitive globbing (used in pathname expansion)
+  shopt -s nocaseglob
 
-# added by travis gem
-[ -f /Users/doug/.travis/travis.sh ] && source /Users/doug/.travis/travis.sh
+  # Turn off less history file generation
+  LESSHISTFILE=/dev/null
 
-# Git Bash Completion
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
+  ### Added by the Heroku Toolbelt
+  export PATH="/usr/local/heroku/bin:$PATH"
+
+  ### Added by QT5.5
+  export PATH="/usr/local/opt/qt@5.5:$PATH"
+
+  # added by travis gem
+  [ -f /Users/doug/.travis/travis.sh ] && source /Users/doug/.travis/travis.sh
+
+  # Git Bash Completion
+  if [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+  fi
 fi
