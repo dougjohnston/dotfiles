@@ -7,15 +7,15 @@ unset file
 
 # Only do the following if in an interactive session
 if [[ $- == *i* ]]; then
-  ### CHRUBY
-  # Get the chruby home directory based on OS
+  #### CHRUBY
+  ## Get the chruby home directory based on OS
   if [[ "$OSTYPE" == "linux-gnu" ]]; then
     chruby="/usr/local/share/chruby"
   elif [[ "$OSTYPE" == "darwin"* ]]; then
     chruby="/usr/local/opt/chruby/share/chruby"
   fi
 
-  # Load chruby, if it exists
+  ## Load chruby, if it exists
   if [ -f "$chruby/chruby.sh" ]; then
     source $chruby/chruby.sh
 
@@ -28,39 +28,44 @@ if [[ $- == *i* ]]; then
   fi
   unset chruby
 
-  # Default Ruby
-  chruby ruby-2.4.1
+  ## Default Ruby
+  chruby ruby-2.5.1
 
-  #
-  ### GIT COMPLETION
-  #
+  ##
+  #### GIT COMPLETION
+  ##
   if [ -f ~/.bin/git-completion.bash ]; then
     source ~/.bin/git-completion.bash
   else
     printf "\n-- Warning: Unable to load git-completion.bash.\n"
   fi
 
-  #
-  ### OTHER OPTIONS
-  #
+  ##
+  #### OTHER OPTIONS
+  ##
 
-  # Case-insensitive globbing (used in pathname expansion)
+  ## Case-insensitive globbing (used in pathname expansion)
   shopt -s nocaseglob
 
-  # Turn off less history file generation
+  ## Turn off less history file generation
   LESSHISTFILE=/dev/null
 
-  ### Added by the Heroku Toolbelt
+  #### Added by the Heroku Toolbelt
   export PATH="/usr/local/heroku/bin:$PATH"
 
-  ### Added by QT5.5
+  #### Added by QT5.5
   export PATH="/usr/local/opt/qt@5.5:$PATH"
 
-  # added by travis gem
+  # Add Visual Studio Code (code)
+  export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
+
+  ## added by travis gem
   [ -f /Users/doug/.travis/travis.sh ] && source /Users/doug/.travis/travis.sh
 
-  # Git Bash Completion
-  if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
-  fi
+  export LC_ALL=C
+  export LC_CTYPE=C
+  export LANG=C
+
+  ## Git Bash Completion
+  [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
 fi

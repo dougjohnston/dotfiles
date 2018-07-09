@@ -74,18 +74,18 @@ Plugin 'kien/ctrlp.vim'
   "nmap <leader>bs :CtrlPMRU<cr>
 
 " Buffer Navigation
-Plugin 'jeetsukumaran/vim-buffergator'
+"Plugin 'jeetsukumaran/vim-buffergator'
   " Use the right side of the screen
-  let g:buffergator_viewport_split_policy = 'R'
+  "let g:buffergator_viewport_split_policy = 'R'
 
   " I want my own keymappings...
-  let g:buffergator_suppress_keymaps = 1
+  "let g:buffergator_suppress_keymaps = 1
 
   " Looper buffers
   "let g:buffergator_mru_cycle_loop = 1
 
   " View the entire list of buffers open
-  nmap <leader>b :BuffergatorOpen<cr>
+  "nmap <leader>b :BuffergatorOpen<cr>
 
   " Go to the previous buffer open
   "nmap <leader>jj :BuffergatorMruCyclePrev<cr>
@@ -94,7 +94,7 @@ Plugin 'jeetsukumaran/vim-buffergator'
   "nmap <leader>kk :BuffergatorMruCycleNext<cr>
 
 " Code Completion (setup: http://bit.ly/12c5JHr)
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 
 " Code Helpers
 Plugin 'Raimondi/delimitMate'
@@ -156,35 +156,35 @@ Plugin 'mileszs/ack.vim'
 Plugin 'scrooloose/nerdcommenter'
 
 " Syntax Checking (setup: npm install -g jshint)
-Plugin 'scrooloose/syntastic'
-  set statusline+=%#warningmsg#
-  set statusline+=%{SyntasticStatuslineFlag()}
-  set statusline+=%*
-
-  let g:syntastic_auto_loc_list = 0
-  let g:syntastic_loc_list_height = 5
-  let g:syntastic_check_on_open = 1
-  let g:syntastic_check_on_wq = 1
-  let g:syntastic_cursor_column = 0
-
-  let g:syntastic_enable_signs = 1
-  let g:syntastic_error_symbol = "✗"
-  let g:syntastic_warning_symbol = "⚠"
-
-  let g:syntastic_ruby_checkers = ['rubocop']
-  let g:syntastic_scss_checkers = ['scss_lint']
-  let g:syntastic_javascript_checkers = ['eslint']
-  let g:syntastic_ignore_files = ['schema\.rb', 'structure\.rb']
+" Plugin 'scrooloose/syntastic'
+"   set statusline+=%#warningmsg#
+"   set statusline+=%{SyntasticStatuslineFlag()}
+"   set statusline+=%*
+"
+"   let g:syntastic_auto_loc_list = 0
+"   let g:syntastic_loc_list_height = 5
+"   let g:syntastic_check_on_open = 1
+"   let g:syntastic_check_on_wq = 1
+"   let g:syntastic_cursor_column = 0
+"
+"   let g:syntastic_enable_signs = 1
+"   let g:syntastic_error_symbol = "✗"
+"   let g:syntastic_warning_symbol = "⚠"
+"
+"   let g:syntastic_ruby_checkers = ['rubocop']
+"   let g:syntastic_scss_checkers = ['scss_lint']
+"   let g:syntastic_javascript_checkers = ['eslint']
+"   let g:syntastic_ignore_files = ['schema\.rb', 'structure\.rb']
 
   nnoremap <leader>sc :SyntasticCheck<CR>
 
 " Whitespace
-Plugin 'ntpeters/vim-better-whitespace'
-  autocmd BufWritePre * StripWhitespace
+" Plugin 'ntpeters/vim-better-whitespace'
+" autocmd BufWritePre * StripWhitespace
 
 " Look & Feel
 Plugin 'nathanaelkane/vim-indent-guides'
-"Plugin 'myusuf3/numbers.vim' " PERFORMANCE HIT!
+" Plugin 'myusuf3/numbers.vim' " PERFORMANCE HIT!
 
 " Snippet Support
 Plugin 'SirVer/ultisnips'
@@ -202,12 +202,12 @@ Plugin 'SirVer/ultisnips'
 " Swap Windows
 Plugin 'wesQ3/vim-windowswap'
 
-"Plugin 'MarcWeber/vim-addon-mw-utils'
-"Plugin 'tomtom/tlib_vim'
-"Plugin 'garbas/vim-snipmate'
-  "let g:snipMate = {}
-  "let g:snipMate.scope_aliases = {}
-  "let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
+" Plugin 'MarcWeber/vim-addon-mw-utils'
+" Plugin 'tomtom/tlib_vim'
+" Plugin 'garbas/vim-snipmate'
+" let g:snipMate = {}
+" let g:snipMate.scope_aliases = {}
+" let g:snipMate.scope_aliases['ruby'] = 'ruby,rails'
 
 " Snippet Libraries
 Plugin 'honza/vim-snippets'
@@ -217,8 +217,8 @@ Plugin 'honza/vim-snippets'
   "map <Leader>t :Dispatch rspec %<CR>
 
 " BUNDLES TO TRY SOMEDAY
-"Plugin 'godlygeek/tabular'
-"Plugin 'terryma/vim-multiple-cursors'
+" Plugin 'godlygeek/tabular'
+" Plugin 'terryma/vim-multiple-cursors'
 
 call vundle#end()
 filetype plugin indent on
@@ -258,8 +258,8 @@ set incsearch
 set hlsearch
 
 " Whitespace
-set list
-set listchars=tab:▸\ ,eol:¬
+set nolist
+"set listchars=tab:▸\ ,eol:¬
 
 " Wrapping
 set nowrap
@@ -305,7 +305,7 @@ nnoremap <leader>s :sp<CR>
 
 " Split Resizing
 " Maximize Current Buffer
-nnoremap <leader>f :NERDTreeClose<CR> <C-w>\|<C-w>_
+"nnoremap <leader>f :NERDTreeClose<CR> <C-w>\|<C-w>_
 " Fit all splits in window
 nnoremap <leader>u <C-w>=
 
