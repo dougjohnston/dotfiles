@@ -29,7 +29,7 @@ if [[ $- == *i* ]]; then
   unset chruby
 
   ## Default Ruby
-  chruby ruby-2.5.1
+  chruby ruby-2.6.0
 
   ##
   #### GIT COMPLETION
@@ -54,13 +54,13 @@ if [[ $- == *i* ]]; then
   export PATH="/usr/local/heroku/bin:$PATH"
 
   #### Added by QT5.5
-  export PATH="/usr/local/opt/qt@5.5:$PATH"
+  export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
 
   # Add Visual Studio Code (code)
-  export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
+  #   export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
 
   ## added by travis gem
-  [ -f /Users/doug/.travis/travis.sh ] && source /Users/doug/.travis/travis.sh
+  [ -f /Users/dougjohnston/.travis/travis.sh ] && source /Users/dougjohnston/.travis/travis.sh
 
   export LC_ALL=C
   export LC_CTYPE=C
