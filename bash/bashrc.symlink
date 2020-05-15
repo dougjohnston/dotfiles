@@ -1,9 +1,12 @@
 # Load ~/.bash_extra, ~/.bash_prompt, ~/.bash_exports, ~/.bash_aliases and ~/.bash_functions
 # ~/.bash_extra can be used for settings you don’t want to commit
+# for file in ~/.{bash_prompt,bash_exports,bash_aliases,bash_functions,bash_extras}; do
 for file in ~/.{bash_prompt,bash_exports,bash_aliases,bash_functions,bash_extras}; do
   [ -r "$file" ] && source "$file"
 done
 unset file
+
+export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # Only do the following if in an interactive session
 if [[ $- == *i* ]]; then
@@ -29,7 +32,7 @@ if [[ $- == *i* ]]; then
   unset chruby
 
   ## Default Ruby
-  chruby ruby-2.6.0
+  # chruby ruby-2.7.0
 
   ##
   #### GIT COMPLETION
@@ -50,11 +53,17 @@ if [[ $- == *i* ]]; then
   ## Turn off less history file generation
   LESSHISTFILE=/dev/null
 
+  ## Add personal scripts directory
+  export PATH="./scripts:$PATH"
+
+  ## Add PWD bin directory for Rails support
+  export PATH="./bin:$PATH"
+
   #### Added by the Heroku Toolbelt
   export PATH="/usr/local/heroku/bin:$PATH"
 
   #### Added by QT5.5
-  export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
+  # export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
 
   # Add Visual Studio Code (code)
   #   export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
