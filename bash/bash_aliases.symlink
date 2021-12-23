@@ -32,6 +32,9 @@ alias hrc="heroku run console "
 # Miscellaneous Aliases
 alias tmp="cd ~/tmp"
 
+# Projects
+alias uds="cd ~/Sites/udemy/data-structures"
+
 ###################################
 # App-Specific Aliases
 ###################################
