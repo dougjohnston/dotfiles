@@ -29,7 +29,7 @@ Plugin 'justinmk/vim-sneak'
   let g:sneak#s_next = 1
 
 " Color Scheme
-Plugin 'dougjohnston/tender.vim'
+"Plugin 'dougjohnston/tender.vim'
 "Plugin 'flazz/vim-colorschemes'
 "Plugin 'w0ng/vim-hybrid'
 "Plugin 'altercation/vim-colors-solarized'
@@ -228,7 +228,7 @@ let macvim_skip_colorscheme = 1
 "colorscheme hybrid
 "colorscheme solarized
 "colorscheme codeschool
-colorscheme tender
+"colorscheme tender
 "let g:lightline = { 'colorscheme': 'tender' }
 
 """ VIM PERFORMANCE

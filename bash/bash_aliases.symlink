@@ -12,6 +12,9 @@ alias -- -="cd -"
 # History
 alias h="history"
 
+# Apple Silicon / Homebrew
+alias brew_x86='arch --x86_64 /usr/local/Homebrew/bin/brew'
+
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en1"
@@ -64,6 +67,7 @@ alias c="code ."
 alias gst="git status"
 alias gcm="git commit -m"
 alias gce="git commit -e"
+alias glv="git tag --sort=-taggerdate | head -1"
 
 ###################################
 # Mac-Specific Aliases

@@ -17,7 +17,7 @@ if [[ $- == *i* ]]; then
   if [[ "$OSTYPE" == "linux-gnu" ]]; then
     chruby="/usr/local/share/chruby"
   elif [[ "$OSTYPE" == "darwin"* ]]; then
-    chruby="/usr/local/opt/chruby/share/chruby"
+    chruby="/opt/homebrew/opt/chruby/share/chruby"
   fi
 
   ## Load chruby, if it exists
@@ -34,7 +34,7 @@ if [[ $- == *i* ]]; then
   unset chruby
 
   ## Default Ruby
-  chruby ruby-2.7.2
+  chruby ruby-2.7.4
 
   ## NVM
   export NVM_DIR="$HOME/.nvm"
@@ -60,6 +60,9 @@ if [[ $- == *i* ]]; then
   ## Turn off less history file generation
   LESSHISTFILE=/dev/null
 
+  # Add alternate homebrew for Apple Silicon
+  PATH=/opt/homebrew/bin:$PATH
+
   ## Add personal scripts directory
   export PATH="./scripts:$PATH"
 
@@ -69,14 +72,11 @@ if [[ $- == *i* ]]; then
   #### Added by the Heroku Toolbelt
   export PATH="/usr/local/heroku/bin:$PATH"
 
-  #### Added by QT5.5
-  # export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
-
   # Add Visual Studio Code (code)
   #   export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
 
   ## added by travis gem
-  [ -f /Users/dougjohnston/.travis/travis.sh ] && source /Users/dougjohnston/.travis/travis.sh
+  [ -f /Users/doug/.travis/travis.sh ] && source /Users/doug/.travis/travis.sh
 
   export LC_ALL=C
   export LC_CTYPE=C
@@ -84,5 +84,9 @@ if [[ $- == *i* ]]; then
 
   ## Git Bash Completion
   [ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+
+  ## Python
+  export PYENV_ROOT="$HOME/.pyenv"
+  command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
 fi
-export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
