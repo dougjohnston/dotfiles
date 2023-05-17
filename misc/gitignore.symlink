@@ -3,3 +3,5 @@
 
 # OS X
 .DS_Store
+
+.vscode

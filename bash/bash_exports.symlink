@@ -17,6 +17,9 @@ export HISTIGNORE="ls:ls *:cd:cd -:pwd;exit:date:* --help"
 export LC_ALL="en_US.UTF-8"
 export LANG="en_US.UTF-8"
 
+# Set timezone to UTC for bash commands
+export TZ=UTC
+
 # libxml2
 # export LDFLAGS="-L/usr/local/opt/libxml2/lib"
 # export CPPFLAGS="-I/usr/local/opt/libxml2/include"
@@ -35,3 +38,4 @@ export RUBY_CONFIGURE_OPTS=--with-readline-dir=`brew --prefix readline`
 # Set the path
 export PATH=~/.bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
 export PATH=/usr/local/opt/libxml2/bin:$PATH
+export PATH=~/scripts/bin:$PATH
