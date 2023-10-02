@@ -33,6 +33,7 @@ alias config="a ~/.dotfiles/"
 alias hrc="heroku run console "
 
 # Miscellaneous Aliases
+alias scr="cd ~/scripts"
 alias tmp="cd ~/tmp"
 
 # Projects
@@ -54,6 +55,7 @@ alias rs="rails s -b 'ssl://0.0.0.0:3000?key=../../.ssh/localhost/key.pem&cert=.
 alias rs1="rails s -b 'ssl://0.0.0.0:3001?key=../../.ssh/localhost/key.pem&cert=../../.ssh/localhost/cert.pem'"
 alias rs2="rails s -b 'ssl://0.0.0.0:3002?key=../../.ssh/localhost/key.pem&cert=../../.ssh/localhost/cert.pem'"
 alias rs3="rails s -b 'ssl://0.0.0.0:3003?key=../../.ssh/localhost/key.pem&cert=../../.ssh/localhost/cert.pem'"
+alias rs8="rails s -b 'ssl://0.0.0.0:8888?key=../../.ssh/localhost/key.pem&cert=../../.ssh/localhost/cert.pem'"
 
 # Rails + Guard
 alias beg="bundle exec guard"

@@ -20,20 +20,12 @@ export LANG="en_US.UTF-8"
 # Set timezone to UTC for bash commands
 export TZ=UTC
 
-# libxml2
-# export LDFLAGS="-L/usr/local/opt/libxml2/lib"
-# export CPPFLAGS="-I/usr/local/opt/libxml2/include"
-# export PKG_CONFIG_PATH="/usr/local/opt/libxml2/lib/pkgconfig"
+# Merge Tool
+export THOR_MERGE="code -d $1 $2"
 
 # Bundler
 export BUNDLER_ENV="dev"
 export BUNDLER_EDITOR="code"
-
-# Ruby Config
-export RUBY_CONFIGURE_OPTS=--with-readline-dir=`brew --prefix readline`
-
-# SSL
-# export SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
 
 # Set the path
 export PATH=~/.bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
