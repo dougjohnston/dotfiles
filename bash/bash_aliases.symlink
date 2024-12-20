@@ -63,6 +63,9 @@ alias beg="bundle exec guard"
 # Bundler
 alias be="bundle exec "
 
+# Thin/Smashing
+alias smash="be smashing start --ssl --ssl-disable-verify"
+
 # Text Editors
 alias vi="vim"
 alias a="atom ."
@@ -73,6 +76,7 @@ alias gst="git status"
 alias gcm="git commit -m"
 alias gce="git commit -e"
 alias glv="git tag --sort=-taggerdate | head -1"
+alias gb="git for-each-ref --sort=committerdate refs/heads/ --format='%(committerdate:short) %(refname:short)'"
 
 ###################################
 # Mac-Specific Aliases
