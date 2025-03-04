@@ -52,8 +52,11 @@ function parse_git_branch() {
 }
 
 function ruby_version() {
-  ruby -v | sed -e "s/ruby //" -e s/p.*//
-  #while :; do ruby -v | sed -e "s/ruby //" -e s/p.*//; sleep 1; done
+  ruby -v | sed -e "s/ruby //" -e "s/ (.*)//g" -e "s/\[.*\]//g" | tr -d '[:space:]'
 }
 
-PS1="\[$GRAY\]\D{%T} $TOKEN\[$GRAY\] \u@\h $TOKEN \[$RED\]\$(ruby_version) $TOKEN \[$ORANGE\]\w \[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]])$TOKEN \[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\n\$ \[$RESET\]"
+function node_version() {
+  node -v 2>/dev/null | sed -e "s/v//" | tr -d '[:space:]'
+}
+
+PS1="\[$GRAY\]\D{%T} $TOKEN\[$GRAY\] \u@\h $TOKEN \[$ORANGE\]Ruby \$(ruby_version) $TOKEN \[$ORANGE\]Node \$(node_version) $TOKEN \[$YELLOW\]\w \[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]])$TOKEN \[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\n\$ \[$RESET\]"

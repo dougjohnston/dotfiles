@@ -51,11 +51,13 @@ alias killruby="pkill -9 -f 'puma|ruby|spring'"
 alias rc="rails console"
 alias rg="rails generate "
 alias rd="rails dbconsole"
-alias rs="rails s -b 'ssl://0.0.0.0:3000?key=../../.ssh/localhost/key.pem&cert=../../.ssh/localhost/cert.pem'"
-alias rs1="rails s -b 'ssl://0.0.0.0:3001?key=../../.ssh/localhost/key.pem&cert=../../.ssh/localhost/cert.pem'"
-alias rs2="rails s -b 'ssl://0.0.0.0:3002?key=../../.ssh/localhost/key.pem&cert=../../.ssh/localhost/cert.pem'"
-alias rs3="rails s -b 'ssl://0.0.0.0:3003?key=../../.ssh/localhost/key.pem&cert=../../.ssh/localhost/cert.pem'"
-alias rs8="rails s -b 'ssl://0.0.0.0:8888?key=../../.ssh/localhost/key.pem&cert=../../.ssh/localhost/cert.pem'"
+
+# Rails Server Aliases
+alias rs="rails s -b 'ssl://0.0.0.0:3000?key=../../.ssh/localhost/localhost.key&cert=../../.ssh/localhost/localhost.crt'"
+alias rs1="rails s -b 'ssl://0.0.0.0:3001?key=../../.ssh/localhost/localhost.key&cert=../../.ssh/localhost/localhost.crt'"
+alias rs2="rails s -b 'ssl://0.0.0.0:3002?key=../../.ssh/localhost/localhost.key&cert=../../.ssh/localhost/localhost.crt'"
+alias rs3="rails s -b 'ssl://0.0.0.0:3003?key=../../.ssh/localhost/localhost.key&cert=../../.ssh/localhost/localhost.crt'"
+alias rs8="rails s -b 'ssl://0.0.0.0:8888?key=../../.ssh/localhost/localhost.key&cert=../../.ssh/localhost/localhost.crt'"
 
 # Rails + Guard
 alias beg="bundle exec guard"
@@ -64,12 +66,14 @@ alias beg="bundle exec guard"
 alias be="bundle exec "
 
 # Thin/Smashing
-alias smash="be smashing start --ssl --ssl-disable-verify"
+alias smash="be smashing start"
+# SSL wasn't working last time
+# alias smash="be smashing start --ssl --ssl-disable-verify --ssl-cert /Users/doug/.ssh/localhost/localhost.crt --ssl-key /Users/doug/.ssh/localhost/localhost.key"
 
 # Text Editors
 alias vi="vim"
-alias a="atom ."
-alias c="code ."
+alias c="code ." # VS Code
+alias ci="code-insiders ." # VS Code Insiders
 
 # Git
 alias gst="git status"

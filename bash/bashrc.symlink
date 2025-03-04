@@ -33,8 +33,12 @@ if [[ $- == *i* ]]; then
   fi
   unset chruby
 
-  ## Default Ruby
-  chruby ruby-3.2.0
+  # If a .ruby-version file exists, load that version, otherwise load the default
+  if [ -f .ruby-version ]; then
+    chruby $(cat .ruby-version)
+  else
+    chruby ruby-3.2.0
+  fi
 
   ## NVM
   export NVM_DIR="$HOME/.nvm"
