@@ -21,11 +21,11 @@ export LANG="en_US.UTF-8"
 export TZ=UTC
 
 # Merge Tool
-export THOR_MERGE="code -d $1 $2"
+export THOR_MERGE="code-insiders -d $1 $2"
 
 # Bundler
 export BUNDLER_ENV="dev"
-export BUNDLER_EDITOR="code"
+export BUNDLER_EDITOR="code-insiders"
 
 # Set the path
 export PATH=~/.bin:/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH

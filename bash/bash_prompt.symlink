@@ -59,4 +59,4 @@ function node_version() {
   node -v 2>/dev/null | sed -e "s/v//" | tr -d '[:space:]'
 }
 
-PS1="\[$GRAY\]\D{%T} $TOKEN\[$GRAY\] \u@\h $TOKEN \[$ORANGE\]Ruby \$(ruby_version) $TOKEN \[$ORANGE\]Node \$(node_version) $TOKEN \[$YELLOW\]\w \[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]])$TOKEN \[$PURPLE\]\$(parse_git_branch)\[$WHITE\]\n\$ \[$RESET\]"
+PS1="\[$GRAY\]\D{%T} $TOKEN\[$GRAY\] \u@\h $TOKEN \[$ORANGE\]\$(ruby_version) $TOKEN \[$RED\]\$(node_version) $TOKEN \[$PURPLE\]\w \[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]])$TOKEN \[$YELLOW\]\$(parse_git_branch)\[$WHITE\]\n\$ \[$RESET\]"
